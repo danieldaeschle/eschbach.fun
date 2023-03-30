@@ -1,0 +1,77 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Fun Value Stream @ eschbach">
+  <main>
+    <video autoplay muted loop>
+      <source src="ai-motion.mp4" type="video/mp4" />
+    </video>
+    <h1 id="title">
+      Welcome to the <span class="text-gradient">AI/NLP</span><span
+        class="cursor"></span>&nbsp;Value Stream at eschbach.
+    </h1>
+  </main>
+</Layout>
+
+<script lang="ts">
+  const title = document.querySelector(".text-gradient");
+
+  setTimeout(() => {
+    setTimeout(() => {
+      ["F", "U", "N"].forEach((char, i) => {
+        setTimeout(() => {
+          title.innerText += char;
+        }, i * 200);
+      });
+    }, title.innerText.length * 200 + 400);
+
+    title.innerText.split("").forEach((_, i) => {
+      setTimeout(() => {
+        title.innerText = title.innerText.substring(
+          0,
+          title.innerText.length - 1
+        );
+      }, i * 200);
+    });
+  }, 2000);
+</script>
+
+<style>
+  main {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-color: #01032d;
+  }
+  video {
+    height: 100%;
+  }
+  #title {
+    position: absolute;
+    bottom: 4rem;
+    left: 4rem;
+    color: white;
+  }
+  .text-gradient {
+    background-image: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    background-position: 0%;
+  }
+  .cursor {
+    position: absolute;
+    width: 2px;
+    height: 43px;
+    background-color: #fff;
+    animation: blink 0.8s infinite;
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+</style>
