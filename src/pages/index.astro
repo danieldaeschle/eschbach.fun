@@ -1,25 +1,30 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import QuoteBox from "../components/QuoteBox.astro";
 ---
 
-<Layout title="Fun Value Stream @ eschbach">
-  <main>
-    <video autoplay muted loop>
+<Layout title="FUN at eschbach">
+  <div class="h-screen flex flex-col justify-end bg-[#01032d]">
+    <video autoplay muted loop class="h-full">
       <source src="ai-motion.mp4" type="video/mp4" />
     </video>
-    <h1 id="title">
-      Welcome to the&nbsp;<span class="text-gradient">AI/NLP</span><span
-        class="cursor"></span> Value Stream at eschbach.
+    <h1 class="text-4xl font-bold absolute left-0 bottom-0 m-8 md:m-16 text-white">
+      Welcome to the&nbsp;<span id="team-name" class="[-webkit-text-fill-color:transparent] bg-[0%] bg-[length:400%] bg-gradient-to-r from-violet-600 via-fuchsia-500 via-30% to-white to-60% bg-clip-text fill-transparent">AI/NLP</span><span
+        class="absolute w-[2px] h-[43px] bg-white animate-blink"></span> Team at eschbach.
     </h1>
-  </main>
+  </div>
+  <div class="h-[50vh] flex flex-col justify-center bg-gray-100">
+    <QuoteBox imageUrl="" author="Felix">Warum fährst du kein Smart, Christian?</QuoteBox>
+  </div>
 </Layout>
 
-<script lang="ts">
-  const title = document.querySelector(".text-gradient");
+<script>
+  const title = document.querySelector<HTMLSpanElement>("#team-name");
+  const newTeamName = "FUN";
 
   setTimeout(() => {
     setTimeout(() => {
-      ["F", "U", "N"].forEach((char, i) => {
+      newTeamName.split("").forEach((char, i) => {
         setTimeout(() => {
           title.innerText += char;
         }, i * 200);
@@ -36,51 +41,3 @@ import Layout from "../layouts/Layout.astro";
     });
   }, 2000);
 </script>
-
-<style>
-  main {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    background-color: #01032d;
-  }
-  video {
-    height: 100%;
-  }
-  #title {
-    position: absolute;
-	margin: 4rem;
-    bottom: 0;
-    left: 0;
-    color: white;
-  }
-
-  @media (max-width: 768px) {
-	#title {
-	  margin: 2rem;
-	}
-  }
-
-  .text-gradient {
-    background-image: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 400%;
-    background-position: 0%;
-  }
-
-  .cursor {
-    position: absolute;
-    width: 2px;
-    height: 43px;
-    background-color: #fff;
-    animation: blink 0.8s infinite;
-  }
-
-  @keyframes blink {
-    50% {
-      opacity: 0;
-    }
-  }
-</style>
