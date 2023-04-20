@@ -1,0 +1,25 @@
+---
+export type Props = {
+  name: string;
+  description?: string;
+  imageUrl: string;
+};
+
+const { imageUrl, name, description } = Astro.props;
+---
+
+<div
+  class="rounded-lg bg-white shadow-lg p-8 pt-5 pb-10 text-gray-800 inline-block"
+>
+  <div class="overflow-hidden rounded-full w-64 h-64 mx-auto">
+    <div
+      style={{ backgroundImage: `url(${imageUrl})` }}
+      class="bg-cover h-full w-full bg-center"
+    >
+    </div>
+  </div>
+  <div class="w-full pt-8">
+    <p class="text-2xl text-violet-600 font-bold text-center">{name}</p>
+    <p class="text-center text-gray-500">{description}</p>
+  </div>
+</div>
